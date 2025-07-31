@@ -890,15 +890,15 @@
                 <div class="cart-summary">
                     <div class="summary-row">
                         <span>Subtotal:</span>
-                        <span id="cart-subtotal">$0.00</span>
+                        <span id="cart-subtotal">₹0.00</span>
                     </div>
                     <div class="summary-row">
                         <span>Delivery Fee:</span>
-                        <span id="delivery-fee">$2.99</span>
+                        <span id="delivery-fee">₹2.99</span>
                     </div>
                     <div class="summary-row summary-total">
                         <span>Total:</span>
-                        <span id="cart-total">$2.99</span>
+                        <span id="cart-total">₹2.99</span>
                     </div>
                 </div>
             </div>
@@ -1006,15 +1006,15 @@
                         </div>
                         <div class="summary-row">
                             <span>Subtotal:</span>
-                            <span id="checkout-subtotal">$0.00</span>
+                            <span id="checkout-subtotal">₹0.00</span>
                         </div>
                         <div class="summary-row">
                             <span>Delivery Fee:</span>
-                            <span>$2.99</span>
+                            <span>₹2.99</span>
                         </div>
                         <div class="summary-row summary-total">
                             <span>Total:</span>
-                            <span id="checkout-total">$2.99</span>
+                            <span id="checkout-total">₹2.99</span>
                         </div>
                     </div>
                     
@@ -1447,7 +1447,7 @@
             // Show feedback
             const feedback = document.createElement('div');
             feedback.className = 'cart-feedback';
-            feedback.textContent = `${product.name} added to cart!`;
+            feedback.textContent = `₹{product.name} added to cart!`;
             document.body.appendChild(feedback);
             
             setTimeout(() => {
@@ -1471,18 +1471,18 @@
                 cartItem.innerHTML = `
                     <div class="cart-item-info">
                         <div class="cart-item-image">
-                            <img src="${item.image}" alt="${item.name}" />
+                            <img src="₹{item.image}" alt="₹{item.name}" />
                         </div>
                         <div>
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                            <div class="cart-item-name">₹{item.name}</div>
+                            <div class="cart-item-price">₹₹{item.price.toFixed(2)}</div>
                         </div>
                     </div>
                     <div class="cart-item-quantity">
-                        <button class="quantity-btn minus-btn" data-id="${item.id}">-</button>
-                        <span>${item.quantity}</span>
-                        <button class="quantity-btn plus-btn" data-id="${item.id}">+</button>
-                        <i class="fas fa-trash remove-item" data-id="${item.id}"></i>
+                        <button class="quantity-btn minus-btn" data-id="₹{item.id}">-</button>
+                        <span>₹{item.quantity}</span>
+                        <button class="quantity-btn plus-btn" data-id="₹{item.id}">+</button>
+                        <i class="fas fa-trash remove-item" data-id="₹{item.id}"></i>
                     </div>
                 `;
                 
@@ -1664,11 +1664,11 @@
                 checkoutItem.innerHTML = `
                     <div class="cart-item-info">
                         <div class="cart-item-image">
-                            <img src="${item.image}" alt="${item.name}" />
+                            <img src="₹{item.image}" alt="₹{item.name}" />
                         </div>
                         <div>
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)} (${item.quantity}x)</div>
+                            <div class="cart-item-name">₹{item.name}</div>
+                            <div class="cart-item-price">₹₹{(item.price * item.quantity).toFixed(2)} (₹{item.quantity}x)</div>
                         </div>
                     </div>
                 `;
@@ -1679,8 +1679,8 @@
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             const total = subtotal + 2.99;
             
-            document.getElementById('checkout-subtotal').textContent = `$${subtotal.toFixed(2)}`;
-            document.getElementById('checkout-total').textContent = `$${total.toFixed(2)}`;
+            document.getElementById('checkout-subtotal').textContent = `₹₹{subtotal.toFixed(2)}`;
+            document.getElementById('checkout-total').textContent = `₹₹{total.toFixed(2)}`;
             
             // Pre-fill form with user data if available
             if (currentUser) {
@@ -1772,15 +1772,15 @@
                     <td>${order.items.length} items</td>
                     <td>$${order.total.toFixed(2)}</td>
                     <td>
-                        <select class="status-select" data-order="${order.id}">
-                            <option value="Placed" ${order.status === 'Placed' ? 'selected' : ''}>Placed</option>
-                            <option value="Preparing" ${order.status === 'Preparing' ? 'selected' : ''}>Preparing</option>
-                            <option value="On the Way" ${order.status === 'On the Way' ? 'selected' : ''}>On the Way</option>
-                            <option value="Delivered" ${order.status === 'Delivered' ? 'selected' : ''}>Delivered</option>
+                        <select class="status-select" data-order="₹{order.id}">
+                            <option value="Placed" ₹{order.status === 'Placed' ? 'selected' : ''}>Placed</option>
+                            <option value="Preparing" ₹{order.status === 'Preparing' ? 'selected' : ''}>Preparing</option>
+                            <option value="On the Way" ₹{order.status === 'On the Way' ? 'selected' : ''}>On the Way</option>
+                            <option value="Delivered" ₹{order.status === 'Delivered' ? 'selected' : ''}>Delivered</option>
                         </select>
                     </td>
                     <td>
-                        <button class="admin-btn view-btn" data-order="${order.id}">
+                        <button class="admin-btn view-btn" data-order="v{order.id}">
                             <i class="fas fa-eye"></i>
                         </button>
                     </td>
@@ -1801,7 +1801,7 @@
 
         // Edit product (demo functionality)
         function editProduct(id) {
-            alert(`Edit functionality for product ${id} would be implemented here`);
+            alert(`Edit functionality for product ₹{id} would be implemented here`);
         }
 
         // Delete product (demo functionality)
@@ -1831,19 +1831,19 @@
                 order.items.forEach(item => {
                     itemsHtml += `
                         <div>
-                            ${item.name} - $${item.price.toFixed(2)} x ${item.quantity} ($${(item.price * item.quantity).toFixed(2)})
+                            ₹{item.name} - ₹₹{item.price.toFixed(2)} x ₹{item.quantity} (₹₹{(item.price * item.quantity).toFixed(2)})
                         </div>
                     `;
                 });
                 
                 alert(`
                     Order Details:
-                    ID: ${order.id}
-                    Customer: ${order.customer}
+                    ID: ₹{order.id}
+                    Customer: ₹{order.customer}
                     Items:
-                    ${itemsHtml}
-                    Total: $${order.total.toFixed(2)}
-                    Status: ${order.status}
+                    ₹{itemsHtml}
+                    Total: ₹₹{order.total.toFixed(2)}
+                    Status: ₹{order.status}
                 `);
             }
         }
